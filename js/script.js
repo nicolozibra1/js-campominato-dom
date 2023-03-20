@@ -47,7 +47,8 @@ function showAllBombs(bombs) {
 // PUNTEGGIO
 let score = document.querySelector('.score');
 let yourScore = 0;
-console.log(score);
+let gameOver = false;
+console.log(gameOver);
 
 // FUNZIONE GENERALE CLICK TO PLAY
 function play(e) {
@@ -100,14 +101,17 @@ function play(e) {
             square.classList.add('dead');
             showAllBombs(bombs);
             score.textContent = `Game Over`;
+            gameOver = true;
             });
             
         }
         else {
             square.addEventListener('click', function () {
+                if (!gameOver) {
             square.classList.add('safe');
             yourScore ++;
             score.textContent = `Your score is: ${yourScore}`;
+                }
             })  
         }
         playground.appendChild(square);    
