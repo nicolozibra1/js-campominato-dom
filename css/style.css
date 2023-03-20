@@ -213,3 +213,7 @@ h6{
 .dead{
     background-color: rgb(138, 3, 3);
 }
+.score{
+    font-size: 2rem;
+    font-weight: bold;
+}

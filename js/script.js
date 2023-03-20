@@ -34,7 +34,7 @@ function generateBombs(bombnum, numSquares) {
     }
     return bombs;
 }
-
+//FUNZIONE PER VISUALIZZARE TUTTE LE BOMBE IN CASO DI CLICK SU UNA DI ESSE
 function showAllBombs(bombs) {
     const squares = document.querySelectorAll('.square');
     for(let square of squares) {
@@ -43,6 +43,13 @@ function showAllBombs(bombs) {
         }
     }
 }
+
+// PUNTEGGIO
+let score = document.querySelector('.score');
+let yourScore = 0;
+console.log(score);
+
+// FUNZIONE GENERALE CLICK TO PLAY
 function play(e) {
     e.preventDefault();
 
@@ -92,16 +99,20 @@ function play(e) {
             square.addEventListener('click', function() {
             square.classList.add('dead');
             showAllBombs(bombs);
+            score.textContent = `Game Over`;
             });
+            
         }
         else {
             square.addEventListener('click', function () {
             square.classList.add('safe');
-            })
+            yourScore ++;
+            score.textContent = `Your score is: ${yourScore}`;
+            })  
         }
         playground.appendChild(square);    
         
-    // audio
+    // audio - colonna sonora
     const audioPlayer = document.getElementById("audio-player");
 
     audioPlayer.play();
