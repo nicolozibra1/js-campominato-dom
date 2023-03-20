@@ -1,0 +1,215 @@
+:root{
+    --green-dark: #364030;
+    --green-olive: #56593B;
+    --beige-light: #BFAD8A;
+    --beige-dark: #A6977B;
+    --black-bg: #262524;
+    --brown: #443831;
+}
+
+/* .debug{
+    border: 1px solid red;
+} */
+
+/* PRELOAD */
+.wrapper-preload{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black-bg);
+    position: relative;
+}
+.wrapper-preload h1{
+    font-size: 8rem;
+    font-family: 'Rubik Iso', cursive;
+    text-shadow: 5px 5px 3px rgb(64, 83, 59);
+    z-index: 2;
+}
+.wrapper-preload h3{
+    color: var(--green-dark);
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.664);
+    background: rgb(38,37,36);
+    background: linear-gradient(270deg, rgba(38,37,36,1) 10%, rgba(255, 255, 255, 0.562) 49%, rgba(38,37,36,1) 90%);
+}
+.logo{
+    position: relative;
+    width: 800px;
+}
+.wrapper-preload .box-image{
+    width: 250px;
+    height: 150px;
+    position: absolute;
+    top: 10px;
+    right: 10px;;
+    width: 20%;
+    z-index: 1;
+}
+.wrapper-preload .box-image img{
+    transform: rotate(30deg);
+    width: 100%;
+}
+.wrapper-preload p{
+    color: var(--green-olive);
+    font-weight: bold;
+    text-decoration: overline;
+}
+select{
+    background-color: transparent;
+    border: 5px solid var(--green-olive);
+    border-radius: 10px;
+    color: white;
+    z-index: 3;
+}
+select option{
+    background: var(--green-olive);
+    color: white;
+}
+#btn-play{
+    background-color: var(--brown);
+    color: white;
+    font-weight: bold;
+    margin-top: 250px;
+    z-index: 3;
+    padding: 10px 25px;
+    border: 1px solid var(--green-olive);
+}
+
+.img-preload-left{
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+}
+.img-preload-right{
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+}
+/* THE GAME */
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black-bg);
+}
+
+header, footer{
+    background-color: var(--brown);
+    height: 80px;
+}
+.wrapper h1{
+    font-size: 3rem;
+    font-family: 'Rubik Iso', cursive;
+    text-shadow: 5px 5px 3px rgb(64, 83, 59);
+    z-index: 2;
+}
+
+main{
+    height: calc(100% - 160px);
+    overflow-y: auto;
+    position: relative;
+}
+.soldier-bg{
+    position: absolute;
+    bottom: 0;
+    left: -100px;
+}
+.card-container{
+    position: relative;
+}
+.card{
+    background-color: var(--brown);
+    border: 10px solid var(--green-dark);
+}
+.card-title{
+    background-color: var(--brown);
+    color: var(--black-bg);
+}
+.card-body{
+    background-color: var(--beige-dark);
+}
+.icon i{
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.rules-canvas{
+    height: 100%;
+    width: 50%;
+    background-color: var(--beige-dark);
+    position: absolute;
+    top:0;
+    right:0;
+    z-index:6;
+    border: 10px solid var(--green-dark);
+}
+.rules-canvas p{
+    padding: 0 30px;
+}
+.close-canvas{
+    position: absolute;
+    top:15px;
+    right:30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+#btn-choose{
+    background-color: var(--brown);
+    color: white;
+    font-weight: bold;
+    z-index: 3;
+    padding: 10px 25px;
+    border: 1px solid var(--green-olive);
+}
+.modal-alert{
+    width: 600px;
+    height: 200px;
+    background-color: var(--beige-dark);
+    border: 10px solid var(--green-dark);
+    z-index: 7;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h6{
+    color:rgb(97, 1, 1);
+}
+#btn-confirm{
+    background-color: var(--green-dark);
+    color: white;
+}
+#btn-cancel{
+    background-color: rgb(97, 1, 1);
+    color: white;
+}
+#audio-on{
+    color: var(--green-dark);
+}
+#audio-off{
+    color: rgb(97, 1, 1);
+}
+
+
+#playground{
+    width: 700px;
+    height: 700px;
+    border: 20px solid var(--green-dark);
+    display: flex;
+    flex-flow: row wrap;
+    color: white;
+    z-index: 5;;
+}
+.square{
+    border: 1px solid var(--beige-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.safe{
+    background-color: var(--green-olive);
+    color: white;
+}
+.dead{
+    background-color: rgb(138, 3, 3);
+}

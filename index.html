@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Minefield - The Game</title>
+</head>
+<body>
+    <!-- PRELOAD -->
+    <div class="wrapper-preload">
+        <div class="logo d-flex justify-content-center debug m-auto">
+            <h1 class="text-uppercase text-white pt-5">minefield</h1>
+            <div class="box-image">
+                <img src="./img/thebomb.png" alt="">
+            </div>
+        </div>
+        <h3 class="text-uppercase text-center debug w-25 m-auto">"new chapter"</h3>
+        <p class="text-center fst-italic mt-3 w-50 m-auto">'Are you ready to avoid all the bombs, and find safety on the other side of the minefield?'</p>
+        <h5 class="text-white text-center m-auto pt-3">Choose the level of difficulty</h5>
+        <form id="levelForm" class="d-flex flex-column align-items-center justify-content-center pt-2">
+            <div class="d-flex flex flex-column align-items-center">
+                <select name="level" id="level" class="mb-3">
+                    <option value="easy" selected>Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-play text-uppercase" id="btn-play">play now</button>
+        </form>
+        <img class="img-preload-left" src="./img/preload-bg-image.png" alt="">
+        <img class="img-preload-right" src="./img/preload-bg-image-2.png" alt="">
+    </div>
+    <!-- AUDIO -->
+    <audio id="audio-player" src="./audio/soundtrack.mp3"></audio>
+    <audio src="./audio/sound-effect.mp3" id="audio-effect"></audio>
+    <!-- THE GAME -->
+    <div class="wrapper d-none">
+        <header>
+            <div class="container h-100 d-flex justify-content-center align-items-center">
+                <!-- logo -->
+                <h1 class="text-uppercase text-white">minefield</h1>
+            </div>
+        </header>
+
+        <main class="d-flex justify-content-between debug">
+            <div class="img-container w-25">
+                <img src="./img/soldier-game.png" alt="" class="soldier-bg">
+            </div>
+            <div class="container h-100 w-50 d-flex justify-content-center align-items-center flex-wrap debug">
+                <div id="playground" class="d-none">
+                    <!-- ciclo for javascript -->
+                </div>
+            </div>
+            <div class="card-container w-25 d-flex flex-column justify-content-center align-items-start gap-5 debug">
+                <div class="card w-75 mb-4">
+                    <div class="card-title">
+                        <h4 class="text-uppercase text-center text-white">rules of the game</h4>
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <p class="text-center">Click on the icon to discover the game rules.</p>
+                        <span class="icon"><i class="fa-solid fa-circle-info" id="info-btn"></i></span>
+                    </div>
+                </div>
+                <div class="card w-75 mb-4">
+                    <div class="card-title">
+                        <h4 class="text-uppercase text-center text-white">change the difficulty</h4>
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <p class="text-center">Go back to the previous screen to change the difficulty level.</p>
+                        <p class="text-center fw-semibold">Progress will not be saved.</p>
+                        <button class="btn btn-play text-uppercase" id="btn-choose">choose</button>
+                    </div>
+                </div>
+                <div class="card card-audio w-75">
+                    <div class="card-title">
+                        <h4 class="text-uppercase text-center text-white">audio setting</h4>
+                    </div>
+                    <div class="card-body d-flex justify-content-center">
+                        <!-- AUDIO SETTING -->
+                        <div id="box-audio-on" class="box-audio d-flex flex-column justify-content-center align-items-center pb-2">
+                            <span class="text-white"><strong>Audio: ON</strong></span>
+                            <i class="fa-solid fa-volume-high" id="audio-on"></i>
+                        </div>
+                        <div id="box-audio-off" class="box-audio d-flex flex-column justify-content-center align-items-center d-none pb-2">
+                            <span class="text-white"><strong>Audio: OFF</strong></span>
+                            <i class="fa-solid fa-volume-xmark" id="audio-off"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ON CLICK -->
+            <div class="rules-canvas d-none">
+                <h2 class="text-uppercase text-center py-3">rules of the game</h2>
+                <p>Hi, welcome to the "Minefield" game! The goal of the game is to find all the cells that do not contain a bomb, without selecting the ones that do.</p>
+                <p>Let me explain how it works: the grid has 100 cells, of which 16 contain a bomb. The game starts with all cells covered and you have to select one cell at a time. If you choose a cell that does not contain a bomb, the cell will be uncovered and the number of bombs present in the 8 adjacent cells (if any) will be shown.</p>                 
+                <p>If instead you select a cell that contains a bomb, the game ends immediately and you lose. But don't worry, you can always start again!</p>                 
+                <p>You can mark the cells that you think contain a bomb with a flag, to help you keep track of the ones you have not yet selected. Please note that the flag does not guarantee the presence of a bomb, but it can be a useful aid.</p>              
+                <p>Remember that you can abandon the game at any time, and that you are responsible for your behavior and any damage caused by the game. Additionally, you cannot use any software or tool that could alter the game or influence the results.</p>                  
+                <p>I hope you enjoy playing "Minefield"!</p>
+                <span class="close-canvas">X</span>        
+            </div>
+            <div class="modal-alert d-flex flex-column justify-content-center align-items-center d-none">
+                <h4 class="text-center pt-3 px-3">Are you sure you want to change the difficulty level?</h4>
+                <h6 class="text-uppercase fw-semibold text-center">Your progress will not be saved</h6>
+                <div class="box-btn d-flex justify-content-center align-items-center gap-3">
+                    <form id="levelForm" class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-confirm text-uppercase mt-2" id="btn-confirm">yes i'm sure!</button>
+                    </form>
+                    <button class="btn btn-cancel text-uppercase mt-2" id="btn-cancel">quit</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container h-100 fs-5 d-flex align-items-center">
+                <span class="text-center m-auto text-white">Made with &hearts; by Nicolò Zibra</span> 
+            </div>
+        </footer>
+    </div>
+
+    <script src="./js/utility.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
